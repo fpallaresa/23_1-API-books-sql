@@ -44,7 +44,7 @@ techCompaniesRouter.post("/", async (req: Request, res: Response, next: NextFunc
     const { name, foundedYear, employeesNumber, headquarters, ceo } = req.body as TechCompaniesBody;
 
     const query: string = `
-      INSERT INTO tech_companies (name, released_year, githut_rank, pypl_rank, tiobe_rank)
+      INSERT INTO tech_companies (name, foundedYear, employeesNumber, headquarters, ceo)
       VALUES (?, ?, ?, ?, ?)
     `;
     const params = [name, foundedYear, employeesNumber, headquarters, ceo];
@@ -84,7 +84,7 @@ techCompaniesRouter.put("/:id", async (req: Request, res: Response, next: NextFu
 
     const query = `
       UPDATE tech_companies
-      SET name = ?, released_year = ?, githut_rank = ?, pypl_rank = ?, tiobe_rank = ?
+      SET name = ?, foundedYear = ?, employeesNumber = ?, headquarters = ?, ceo = ?
       WHERE id = ?
     `;
     const params = [name, foundedYear, employeesNumber, headquarters, ceo, id];
