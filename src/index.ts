@@ -58,7 +58,7 @@ const main = async (): Promise<void> => {
 
     // Acepta /tech-companies/*
     app.use("/tech-companies", (req: Request, res: Response, next: NextFunction) => {
-      console.log("Me han pedido libros!!!");
+      console.log("Me han pedido tech companies!!!");
       next();
     });
 

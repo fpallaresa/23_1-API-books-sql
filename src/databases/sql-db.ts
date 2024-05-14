@@ -6,12 +6,14 @@ const SQL_HOST: string = process.env.SQL_HOST as string;
 const SQL_USER: string = process.env.SQL_USER as string;
 const SQL_PASSWORD: string = process.env.SQL_PASSWORD as string;
 const SQL_DATABASE: string = process.env.SQL_DATABASE as string;
+const SQL_PORT: number = process.env.SQL_PORT as unknown as number;
 
 const config: ConnectionOptions = {
   host: SQL_HOST,
   user: SQL_USER,
   password: SQL_PASSWORD,
   database: SQL_DATABASE,
+  port: SQL_PORT,
 };
 
 export const sqlConnect = async (): Promise<Connection> => {

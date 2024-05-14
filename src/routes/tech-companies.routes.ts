@@ -8,7 +8,7 @@ techCompaniesRouter.get("/", async (req: Request, res: Response, next: NextFunct
   try {
     const rows = await sqlQuery(`
       SELECT *
-      FROM tech_companies
+      FROM companies
     `);
     const response = { data: rows };
     res.json(response);
@@ -23,7 +23,7 @@ techCompaniesRouter.get("/:id", async (req: Request, res: Response, next: NextFu
     const id = req.params.id;
     const rows = await sqlQuery(`
       SELECT *
-      FROM tech_companies
+      FROM companies
       WHERE id=${id}
     `);
 
@@ -44,7 +44,7 @@ techCompaniesRouter.post("/", async (req: Request, res: Response, next: NextFunc
     const { name, foundedYear, employeesNumber, headquarters, ceo } = req.body as TechCompaniesBody;
 
     const query: string = `
-      INSERT INTO tech_companies (name, foundedYear, employeesNumber, headquarters, ceo)
+      INSERT INTO companies (name, foundedYear, employeesNumber, headquarters, ceo)
       VALUES (?, ?, ?, ?, ?)
     `;
     const params = [name, foundedYear, employeesNumber, headquarters, ceo];
@@ -66,7 +66,7 @@ techCompaniesRouter.delete("/:id", async (req: Request, res: Response, next: Nex
   try {
     const id = parseInt(req.params.id);
     await sqlQuery(`
-      DELETE FROM tech_companies
+      DELETE FROM companies
       WHERE id = ${id}
     `);
 
@@ -83,7 +83,7 @@ techCompaniesRouter.put("/:id", async (req: Request, res: Response, next: NextFu
     const { name, foundedYear, employeesNumber, headquarters, ceo } = req.body as TechCompaniesBody;
 
     const query = `
-      UPDATE tech_companies
+      UPDATE companies
       SET name = ?, foundedYear = ?, employeesNumber = ?, headquarters = ?, ceo = ?
       WHERE id = ?
     `;
@@ -92,7 +92,7 @@ techCompaniesRouter.put("/:id", async (req: Request, res: Response, next: NextFu
 
     const rows = await sqlQuery(`
       SELECT *
-      FROM tech_companies
+      FROM companies
       WHERE id=${id}
     `);
 
